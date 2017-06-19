@@ -8,14 +8,29 @@ var api = express.Router();
 // Data
 var friends = [
     {
-        userName: "Me",
+        userName: "John Rambo",
         userImg: "http://cdn3.thr.com/sites/default/files/2011/08/rambo_a.jpg",
+        userChoices: [1, 1, 1, 1, 1, 1, 1, 1, 1, 1]
+    },
+    {
+        userName: "John Matrix",
+        userImg: "https://thelittle.org/sites/default/files/imges/film/Commando-645x370.jpg",
+        userChoices: [1, 3, 4, 2, 1, 3, 1, 2, 4, 1]
+    },
+    {
+        userName: "Conan",
+        userImg: "https://i.ytimg.com/vi/DPfPbQOnSDk/hqdefault.jpg",
         userChoices: [5, 5, 5, 5, 5, 5, 5, 5, 5, 5]
     },
     {
-        userName: "Not Me",
-        userImg: "sdf",
-        userChoices: [1, 1, 1, 1, 1, 1, 1, 1, 1, 1]
+        userName: "The Terminator",
+        userImg: "https://static.comicvine.com/uploads/original/3/38511/794443-terminator_1.png",
+        userChoices: [3, 3, 3, 3, 3, 3, 3, 3, 3, 3]
+    },
+    {
+        userName: "Dutch",
+        userImg: "http://www.writeups.org/wp-content/uploads/Dutch-Schaefer-Predator-Schwarzenegger-a.jpg",
+        userChoices: [2, 2, 2, 2, 2, 4, 4, 4, 4, 1]
     }
 ];
 
@@ -47,15 +62,15 @@ api.get("/friends", (req, res) => {
             }
         }
 
-        console.log(Math.min(...friendDiff));
-
-
         //Find the index of the best friend
         bestFriend = friendDiff.indexOf(Math.min(...friendDiff));
         console.log(friends[bestFriend]);
+        
         //Add newFriend to the friends array
+        friends.push(newFriend);
 
-       res.send(friends[bestFriend].userName + " is your best friend"); 
+        res.send(friends[bestFriend].userName + " is your best friend \n" +
+        "see the awesome pic" + friends[bestFriend].userImg);
     });
 
 module.exports = api;
