@@ -16,7 +16,7 @@ var submitChoices = () => {
             "userChoices": userChoices
         };
 
-        console.log(survey);
+        console.log(typeof survey.userChoices[3]);
 
         sendChoices(survey);
     });

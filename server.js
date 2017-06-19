@@ -7,11 +7,12 @@ var api = require("./app/routing/apiRoutes");
 var port = process.env.PORT || 3000;
 var app = express();
 
-// parse application/x-www-form-urlencoded 
-app.use(bodyParser.urlencoded({ extended: false }))
- 
-// parse application/json 
-app.use(bodyParser.json())
+// parse application
+app.use(bodyParser.json());
+app.use(bodyParser.urlencoded({ extended: true }));
+app.use(bodyParser.text());
+app.use(bodyParser.json({ type: "application/vnd.api+json" }));
+
 
 // Serve front-end files from the public folder
 app.use("/", express.static(__dirname + "public"));
