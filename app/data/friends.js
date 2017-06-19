@@ -28,15 +28,13 @@ var sendChoices = (survey) => {
   "method": "POST",
   "data": survey
 }
-
-$.ajax(settings).done(function (response) {
+    console.log(survey);
+$.ajax(settings).done( (response) => {
   console.log(response);
-}).done((res) => {
-    alert(res);
 });
+
 };
 
 $(document).ready(() =>{
     submitChoices();
-    
 });
